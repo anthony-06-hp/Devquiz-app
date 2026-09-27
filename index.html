@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="DevQuiz - Crea, administra y responde tus propios cuestionarios."
+    >
+
+    <meta name="theme-color" content="#4f46e5">
+
+    <title>DevQuiz | Mis cuestionarios</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/quiz.css">
+    <link rel="stylesheet" href="css/editor.css">
+</head>
+
+<body>
+
+    <!-- Accesibilidad -->
+    <a
+        href="#main-content"
+        class="skip-link"
+    >
+        Saltar al contenido principal
+    </a>
+
+    <!-- HEADER -->
+    <header class="site-header">
+
+        <div class="container header-content">
+
+            <a
+                href="#"
+                class="brand"
+                id="brand-link"
+                aria-label="DevQuiz - Inicio"
+            >
+                <span class="brand-icon" aria-hidden="true">
+                    ?
+                </span>
+
+                <span>
+                    Dev<span>Quiz</span>
+                </span>
+            </a>
+
+            <nav
+                class="main-nav"
+                aria-label="Navegación principal"
+            >
+
+                <button
+                    class="nav-button active"
+                    data-view="home"
+                    type="button"
+                >
+                    <span aria-hidden="true">🏠</span>
+                    Inicio
+                </button>
+
+                <button
+                    class="nav-button"
+                    data-view="create"
+                    type="button"
+                >
+                    <span aria-hidden="true">＋</span>
+                    Crear
+                </button>
+
+                <button
+                    class="nav-button"
+                    data-view="history"
+                    type="button"
+                >
+                    <span aria-hidden="true">📊</span>
+                    Historial
+                </button>
+
+            </nav>
+
+            <button
+                id="theme-toggle"
+                class="icon-button"
+                type="button"
+                aria-label="Cambiar tema"
+                title="Cambiar tema"
+            >
+                🌙
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <main
+        id="main-content"
+        class="main-content"
+    >
+
+        <div class="container">
+
+
+            <!-- =========================================
+                 VISTA INICIO
+            ========================================== -->
+
+            <section
+                id="home-view"
+                class="view active-view"
+                aria-labelledby="home-title"
+            >
+
+                <div class="hero">
+
+                    <div class="hero-content">
+
+                        <span class="eyebrow">
+                            CUESTIONARIOS PERSONALIZADOS
+                        </span>
+
+                        <h1 id="home-title">
+                            Aprende creando
+                            <span>tus propios quizzes.</span>
+                        </h1>
+
+                        <p>
+                            Crea cuestionarios, agrega tus propias preguntas,
+                            practica y revisa tus resultados.
+                        </p>
+
+                        <button
+                            id="create-first-button"
+                            class="button button-primary"
+                            type="button"
+                        >
+                            <span aria-hidden="true">＋</span>
+                            Crear cuestionario
+                        </button>
+
+                    </div>
+
+                    <div class="hero-visual" aria-hidden="true">
+
+                        <div class="quiz-illustration">
+
+                            <div class="illustration-check">
+                                ✓
+                            </div>
+
+                            <div class="illustration-line long"></div>
+                            <div class="illustration-line medium"></div>
+                            <div class="illustration-line short"></div>
+
+                            <div class="illustration-option">
+                                <span>✓</span>
+                                JavaScript
+                            </div>
+
+                            <div class="illustration-option">
+                                <span></span>
+                                Python
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ESTADÍSTICAS -->
+
+                <section
+                    class="dashboard-stats"
+                    aria-label="Estadísticas generales"
+                >
+
+                    <article class="stat-card">
+
+                        <span
+                            class="stat-icon"
+                            aria-hidden="true"
+                        >
+                            📝
+                        </span>
+
+                        <div>
+                            <span class="stat-label">
+                                Cuestionarios
+                            </span>
+
+                            <strong id="total-quizzes">
+                                0
+                            </strong>
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <span
+                            class="stat-icon"
+                            aria-hidden="true"
+                        >
+                            ❓
+                        </span>
+
+                        <div>
+                            <span class="stat-label">
+                                Preguntas
+                            </span>
+
+                            <strong id="total-questions">
+                                0
+                            </strong>
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <span
+                            class="stat-icon"
+                            aria-hidden="true"
+                        >
+                            🎯
+                        </span>
+
+                        <div>
+                            <span class="stat-label">
+                                Intentos
+                            </span>
+
+                            <strong id="total-attempts">
+                                0
+                            </strong>
+                        </div>
+
+                    </article>
+
+
+                    <article class="stat-card">
+
+                        <span
+                            class="stat-icon"
+                            aria-hidden="true"
+                        >
+                            📈
+                        </span>
+
+                        <div>
+                            <span class="stat-label">
+                                Promedio
+                            </span>
+
+                            <strong id="average-score">
+                                0%
+                            </strong>
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- LISTA DE CUESTIONARIOS -->
+
+                <section
+                    class="section-block"
+                    aria-labelledby="quiz-list-title"
+                >
+
+                    <div class="section-heading">
+
+                        <div>
+                            <span class="section-eyebrow">
+                                MI COLECCIÓN
+                            </span>
+
+                            <h2 id="quiz-list-title">
+                                Mis cuestionarios
+                            </h2>
+                        </div>
+
+                        <button
+                            id="create-quiz-button"
+                            class="button button-secondary"
+                            type="button"
+                        >
+                            ＋ Nuevo
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="quiz-list"
+                        class="quiz-list"
+                    >
+                    </div>
+
+
+                    <!-- Estado vacío -->
+
+                    <div
+                        id="empty-state"
+                        class="empty-state"
+                        hidden
+                    >
+
+                        <div
+                            class="empty-icon"
+                            aria-hidden="true"
+                        >
+                            📝
+                        </div>
+
+                        <h3>
+                            Todavía no tienes cuestionarios
+                        </h3>
+
+                        <p>
+                            Crea tu primer cuestionario y empieza a practicar.
+                        </p>
+
+                        <button
+                            class="button button-primary"
+                            id="empty-create-button"
+                            type="button"
+                        >
+                            Crear mi primer cuestionario
+                        </button>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+
+            <!-- =========================================
+                 VISTA CREAR / EDITAR
+            ========================================== -->
+
+            <section
+                id="create-view"
+                class="view"
+                aria-labelledby="editor-title"
+                hidden
+            >
+
+                <div class="page-heading">
+
+                    <button
+                        id="back-home-from-editor"
+                        class="back-button"
+                        type="button"
+                    >
+                        ← Volver
+                    </button>
+
+                    <span class="section-eyebrow">
+                        EDITOR
+                    </span>
+
+                    <h1 id="editor-title">
+                        Crear cuestionario
+                    </h1>
+
+                    <p>
+                        Define el cuestionario y agrega todas las preguntas
+                        que necesites.
+                    </p>
+
+                </div>
+
+
+                <form
+                    id="quiz-editor-form"
+                    class="editor-form"
+                    novalidate
+                >
+
+                    <input
+                        type="hidden"
+                        id="quiz-id"
+                    >
+
+
+                    <!-- INFORMACIÓN GENERAL -->
+
+                    <fieldset class="editor-card">
+
+                        <legend>
+                            Información del cuestionario
+                        </legend>
+
+                        <div class="form-grid">
+
+                            <div class="form-group form-full">
+
+                                <label for="quiz-title">
+                                    Título
+                                    <span aria-hidden="true">*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="quiz-title"
+                                    name="title"
+                                    placeholder="Ej. Ingeniería de Software"
+                                    maxlength="80"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="quiz-category">
+                                    Categoría
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="quiz-category"
+                                    name="category"
+                                    placeholder="Ej. Programación"
+                                    maxlength="40"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="quiz-description">
+                                    Descripción
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="quiz-description"
+                                    name="description"
+                                    placeholder="Describe brevemente el cuestionario"
+                                    maxlength="150"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </fieldset>
+
+
+                    <!-- PREGUNTAS -->
+
+                    <section
+                        class="editor-card"
+                        aria-labelledby="questions-title"
+                    >
+
+                        <div class="editor-card-header">
+
+                            <div>
+
+                                <h2 id="questions-title">
+                                    Preguntas
+                                </h2>
+
+                                <p>
+                                    Agrega preguntas y selecciona las respuestas
+                                    correctas.
+                                </p>
+
+                            </div>
+
+                            <span
+                                id="question-count"
+                                class="count-badge"
+                            >
+                                0 preguntas
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            id="questions-container"
+                            class="questions-container"
+                        >
+                        </div>
+
+
+                        <button
+                            id="add-question-button"
+                            class="button button-outline add-question-button"
+                            type="button"
+                        >
+                            ＋ Agregar pregunta
+                        </button>
+
+                    </section>
+
+
+                    <!-- ACCIONES -->
+
+                    <div class="editor-actions">
+
+                        <button
+                            id="cancel-editor-button"
+                            class="button button-secondary"
+                            type="button"
+                        >
+                            Cancelar
+                        </button>
+
+                        <button
+                            class="button button-primary"
+                            type="submit"
+                        >
+                            Guardar cuestionario
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+
+            <!-- =========================================
+                 VISTA QUIZ
+            ========================================== -->
+
+            <section
+                id="quiz-view"
+                class="view"
+                aria-labelledby="play-title"
+                hidden
+            >
+
+                <div class="quiz-page">
+
+                    <div class="quiz-topbar">
+
+                        <button
+                            id="exit-quiz-button"
+                            class="back-button"
+                            type="button"
+                        >
+                            ← Salir
+                        </button>
+
+                        <span
+                            id="playing-category"
+                            class="category-badge"
+                        >
+                            Categoría
+                        </span>
+
+                    </div>
+
+
+                    <div class="quiz-card">
+
+                        <div class="quiz-header">
+
+                            <div class="quiz-meta">
+
+                                <span id="play-title">
+                                    Cuestionario
+                                </span>
+
+                                <span id="play-counter">
+                                    Pregunta 1 de 5
+                                </span>
+
+                            </div>
+
+
+                            <div
+                                class="progress-container"
+                                aria-label="Progreso del cuestionario"
+                                role="progressbar"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                                aria-valuenow="0"
+                            >
+
+                                <div
+                                    id="quiz-progress"
+                                    class="progress-bar"
+                                ></div>
+
+                            </div>
+
+                        </div>
+
+
+                        <form
+                            id="play-form"
+                            class="play-form"
+                        >
+
+                            <fieldset>
+
+                                <legend
+                                    id="play-question"
+                                    class="play-question"
+                                >
+                                    Pregunta
+                                </legend>
+
+
+                                <div
+                                    id="play-options"
+                                    class="play-options"
+                                >
+                                </div>
+
+                            </fieldset>
+
+
+                            <div
+                                id="play-feedback"
+                                class="play-feedback"
+                                role="status"
+                                aria-live="polite"
+                                hidden
+                            >
+                            </div>
+
+
+                            <div class="quiz-actions">
+
+                                <button
+                                    id="check-answer-button"
+                                    class="button button-primary button-large"
+                                    type="button"
+                                >
+                                    Comprobar respuesta
+                                </button>
+
+                                <button
+                                    id="next-question-button"
+                                    class="button button-primary button-large"
+                                    type="button"
+                                    hidden
+                                >
+                                    Siguiente pregunta →
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================================
+                 VISTA RESULTADOS
+            ========================================== -->
+
+            <section
+                id="result-view"
+                class="view"
+                aria-labelledby="result-title"
+                tabindex="-1"
+                hidden
+            >
+
+                <div class="result-card">
+
+                    <div class="result-icon" aria-hidden="true">
+                        🎉
+                    </div>
+
+                    <span class="section-eyebrow">
+                        CUESTIONARIO TERMINADO
+                    </span>
+
+                    <h1 id="result-title">
+                        ¡Buen trabajo!
+                    </h1>
+
+                    <p id="result-message">
+                        Has completado el cuestionario.
+                    </p>
+
+
+                    <div class="score-circle">
+
+                        <strong id="final-percentage">
+                            0%
+                        </strong>
+
+                        <span>
+                            puntuación
+                        </span>
+
+                    </div>
+
+
+                    <div class="result-stats">
+
+                        <article>
+                            <strong id="result-correct">
+                                0
+                            </strong>
+
+                            <span>
+                                Correctas
+                            </span>
+                        </article>
+
+                        <article>
+                            <strong id="result-incorrect">
+                                0
+                            </strong>
+
+                            <span>
+                                Incorrectas
+                            </span>
+                        </article>
+
+                        <article>
+                            <strong id="result-total">
+                                0
+                            </strong>
+
+                            <span>
+                                Preguntas
+                            </span>
+                        </article>
+
+                    </div>
+
+
+                    <div class="result-actions">
+
+                        <button
+                            id="retry-quiz-button"
+                            class="button button-primary"
+                            type="button"
+                        >
+                            ↻ Intentar nuevamente
+                        </button>
+
+                        <button
+                            id="result-home-button"
+                            class="button button-secondary"
+                            type="button"
+                        >
+                            Volver al inicio
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================================
+                 VISTA HISTORIAL
+            ========================================== -->
+
+            <section
+                id="history-view"
+                class="view"
+                aria-labelledby="history-title"
+                hidden
+            >
+
+                <div class="page-heading">
+
+                    <span class="section-eyebrow">
+                        ESTADÍSTICAS
+                    </span>
+
+                    <h1 id="history-title">
+                        Historial de resultados
+                    </h1>
+
+                    <p>
+                        Consulta tus últimos intentos y resultados.
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="history-list"
+                    class="history-list"
+                >
+                </div>
+
+
+                <div
+                    id="empty-history"
+                    class="empty-state"
+                    hidden
+                >
+
+                    <div
+                        class="empty-icon"
+                        aria-hidden="true"
+                    >
+                        📊
+                    </div>
+
+                    <h3>
+                        No tienes resultados todavía
+                    </h3>
+
+                    <p>
+                        Completa un cuestionario para ver tus estadísticas.
+                    </p>
+
+                    <button
+                        id="history-home-button"
+                        class="button button-primary"
+                        type="button"
+                    >
+                        Ver cuestionarios
+                    </button>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- TOAST -->
+
+    <div
+        id="toast"
+        class="toast"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        hidden
+    >
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer class="site-footer">
+
+        <div class="container footer-content">
+
+            <p>
+                © 2026 DevQuiz
+            </p>
+
+            <p>
+                Proyecto Frontend
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script
+        type="module"
+        src="js/app.js"
+    ></script>
+
+</body>
+</html>

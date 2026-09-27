@@ -1,0 +1,428 @@
+/* =========================================
+   EDITOR
+========================================= */
+
+.editor-form {
+    max-width: 900px;
+
+    margin-inline: auto;
+}
+
+
+.editor-card {
+    margin: 0 0 25px;
+
+    padding: 25px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    background: var(--surface);
+
+    box-shadow: var(--shadow-sm);
+}
+
+
+.editor-card > legend {
+    padding-inline: 8px;
+
+    color: var(--text);
+
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+.form-full {
+    grid-column: 1 / -1;
+}
+
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+
+.form-group label span {
+    color: var(--danger);
+}
+
+
+.form-group input,
+.form-group textarea,
+.form-group select,
+.question-editor input,
+.question-editor select {
+    width: 100%;
+
+    min-height: 44px;
+
+    padding:
+        10px 12px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: var(--radius-sm);
+
+    background: var(--surface);
+    color: var(--text);
+
+    outline: none;
+
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus,
+.question-editor input:focus,
+.question-editor select:focus {
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(79, 70, 229, 0.12);
+}
+
+
+/* =========================================
+   EDITOR HEADER
+========================================= */
+
+.editor-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 20px;
+}
+
+
+.editor-card-header h2 {
+    margin: 0 0 5px;
+
+    font-size: 1.2rem;
+}
+
+
+.editor-card-header p {
+    margin: 0;
+
+    color: var(--text-secondary);
+
+    font-size: 0.85rem;
+}
+
+
+.count-badge {
+    white-space: nowrap;
+
+    padding: 6px 10px;
+
+    border-radius: 999px;
+
+    background: var(--primary-light);
+    color: var(--primary);
+
+    font-size: 0.75rem;
+    font-weight: 800;
+}
+
+
+/* =========================================
+   QUESTION EDITOR
+========================================= */
+
+.questions-container {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+
+.question-editor {
+    padding: 20px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: var(--radius-md);
+
+    background: var(--surface-soft);
+}
+
+
+.question-editor-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 18px;
+}
+
+
+.question-number {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-weight: 800;
+}
+
+
+.question-number span {
+    width: 30px;
+    height: 30px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: var(--primary);
+    color: white;
+
+    font-size: 0.8rem;
+}
+
+
+.remove-question-button {
+    padding: 7px 10px;
+
+    border-radius: 7px;
+
+    background: var(--danger-light);
+    color: var(--danger);
+
+    cursor: pointer;
+
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+
+.question-main-grid {
+    display: grid;
+
+    grid-template-columns:
+        1fr 220px;
+
+    gap: 15px;
+
+    margin-bottom: 15px;
+}
+
+
+.question-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+
+.question-field label {
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+
+.question-options {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-top: 15px;
+}
+
+
+.option-row {
+    display: grid;
+
+    grid-template-columns:
+        35px 1fr auto;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+.option-label {
+    width: 30px;
+    height: 30px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 7px;
+
+    background: var(--surface);
+    color: var(--text-secondary);
+
+    font-size: 0.75rem;
+    font-weight: 800;
+}
+
+
+.option-row input[type="text"] {
+    width: 100%;
+
+    min-height: 42px;
+
+    padding:
+        8px 10px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 7px;
+
+    background: var(--surface);
+    color: var(--text);
+}
+
+
+.correct-control {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    white-space: nowrap;
+
+    color: var(--text-secondary);
+
+    font-size: 0.75rem;
+}
+
+
+.correct-control input {
+    accent-color: var(--primary);
+}
+
+
+.add-question-button {
+    width: 100%;
+
+    margin-top: 20px;
+}
+
+
+.editor-actions {
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    padding-bottom: 30px;
+}
+
+
+/* =========================================
+   IMAGE FIELD
+========================================= */
+
+.image-url-field {
+    margin-top: 15px;
+}
+
+
+.image-preview {
+    display: none;
+
+    max-width: 200px;
+
+    margin-top: 10px;
+
+    border-radius: 10px;
+
+    border:
+        1px solid var(--border);
+}
+
+
+.image-preview.visible {
+    display: block;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-full {
+        grid-column: auto;
+    }
+
+    .question-main-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .editor-card-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+
+@media (max-width: 520px) {
+
+    .editor-card {
+        padding: 17px;
+    }
+
+    .question-editor {
+        padding: 15px;
+    }
+
+    .option-row {
+        grid-template-columns:
+            30px 1fr;
+    }
+
+    .correct-control {
+        grid-column: 2;
+    }
+
+    .editor-actions {
+        flex-direction: column;
+    }
+
+    .editor-actions .button {
+        width: 100%;
+    }
+}
